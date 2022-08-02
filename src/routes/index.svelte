@@ -2,10 +2,10 @@
 </script>
 
 <svelte:head>
-    <title>Svelte Kit Pokedex</title>
+    <title> Picturesorter </title>
 </svelte:head> 
 
 
-<h1>Svelte Kit Pokedex</h1>
+<h1>Picturesorter</h1>
 
 
