@@ -45,11 +45,20 @@
             <input id="folderselect" type="file" name="file_upload" class="hidden" webkitdirectory multiple bind:files accept="image/*">
         </label>
     </div>
-    <div class="flex flex-wrap justify-center gap-3">
+
+    <!-- <div class="flex flex-wrap justify-center gap-3">
+        {#each gallery as image}
+            <ImageCard file={image}/>
+        {/each}
+    </div> -->
+    
+    
+    <div class="flex absolute inset-x-0 bottom-0 overflow-x-auto overflow-y-hidden gap-2 p-2">
         {#each gallery as image}
             <ImageCard file={image}/>
         {/each}
     </div>
+    
 </div>
 {/if}
 
