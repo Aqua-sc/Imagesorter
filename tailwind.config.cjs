@@ -14,7 +14,15 @@ module.exports = {
       },
 
       width: {
-        'pptx-image': '11%'
+        'pptx-image': '11vw'
+      },
+
+      padding: {
+        'square': '100%'
+      },
+
+      height: {
+        'pptx-image': '11vw'
       }
       }
   }
