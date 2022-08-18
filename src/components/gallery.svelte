@@ -62,16 +62,26 @@
     
     
     <div class="flex absolute left-0 gap-2 overscroll-contain h-gallery">
-        <div class="flex flex-col gap-2 p-2 overscroll-contain overflow-y-auto min-w-pptx-image ">
+        <div class="flex flex-col gap-2 p-2 overscroll-contain overflow-y-auto min-w-pptx-image flex-shrink-0">
             {#each gallery as image}
                 <div class="{selected_img === image ? "shadow-lg shadow-cyan-500/50  border-sky-400": "border-white"} border-4  rounded-md"> 
                     <ImageCard on:selected={newSelect} file={image}/>
                 </div>
             {/each}
         </div>
-        <Bigview file={selected_img}/>
+        <div>
+            <Bigview file={selected_img}/>
+            <div class="absolute inset-x-pptx-image bottom-0 p-3">
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" on:click={removeFiles}> Remove All Images </button>
+                <label> 
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded" on:click={addFiles}> Add Images </button>
+                <input id="folderselect" type="file" name="file_upload" class="hidden" webkitdirectory multiple bind:files accept="image/*">
+                </label>
+            </div>
+        </div>
     </div>
-</div>   
+</div>
+  
     
 
 {/if}
