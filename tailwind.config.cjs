@@ -14,7 +14,8 @@ module.exports = {
       },
 
       width: {
-        'pptx-image': '11vw'
+        'pptx-image': '11vw',
+        'selected' : '60vw'
       },
 
       padding: {
@@ -24,7 +25,16 @@ module.exports = {
       height: {
         'pptx-image': '11vw',
         'nav' : '6.5vh',
-        'gallery' : '93.5vh'
+        'gallery' : '93.5vh',
+        'selected' : '75vh'
+      },
+
+      minWidth: {
+        'selected' : '60vh'
+      },
+
+      minHeight: {
+        'selected' : '75vh'
       }
       }
   }
