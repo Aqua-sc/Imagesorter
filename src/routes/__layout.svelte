@@ -4,7 +4,7 @@
     import Nav from "../components/nav.svelte"
 </script>
 
-<body class="h-screen bg-zinc-600" >
+<body class="bg-zinc-600" >
     <div>
         <Nav/>
     </div>
@@ -14,6 +14,6 @@
 <style>
     @tailwind base;
     @tailwind components;
-    @tailwind utilities;
+    @tailwind utilities; 
        
 </style> 
