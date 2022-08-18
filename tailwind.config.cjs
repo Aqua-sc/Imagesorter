@@ -22,7 +22,9 @@ module.exports = {
       },
 
       height: {
-        'pptx-image': '11vw'
+        'pptx-image': '11vw',
+        'nav' : '6.5vh',
+        'gallery' : '93.5vh'
       }
       }
   }

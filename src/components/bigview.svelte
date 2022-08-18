@@ -5,7 +5,9 @@
 </script>
 <div class="">
 {#if file}
-    <img class="object-contain w-1/2" src="{URL.createObjectURL(file)}" alt=""/>
+    <div class="h-20 w-20"> 
+        <img class="object-contain" src="{URL.createObjectURL(file)}" alt=""/>
+    </div> 
 {:else}
     <p> No image selected </p>
 {/if}
