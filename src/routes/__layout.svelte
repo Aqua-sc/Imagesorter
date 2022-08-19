@@ -4,7 +4,11 @@
     import Nav from "../components/nav.svelte"
 </script>
 
-<body class="bg-zinc-600" >
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+
+<body class=" bg-zinc-600" >
     <div>
         <Nav/>
     </div>

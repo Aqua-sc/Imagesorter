@@ -15,7 +15,8 @@ module.exports = {
 
       width: {
         'pptx-image': '11vw',
-        'selected' : '60vw'
+        'selected' : '55vw',
+        'selected-text' : '20vw'
       },
 
       padding: {
