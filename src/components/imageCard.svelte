@@ -1,6 +1,8 @@
 <script> 
     import { createEventDispatcher } from 'svelte'
     export let file
+    export let selected
+
     
     const dispatch = createEventDispatcher();
     function select() {
@@ -11,7 +13,7 @@
 </script>
 
 
-<div class="relative flex-shrink-0 p-0  h-pptx-image w-pptx-image" id="imageDiv" on:click={select}>
+<div class="relative flex-shrink-0 p-0  h-pptx-image w-pptx-image {selected ? "shadow-lg shadow-white  border-double": "border-white"} border-4 rounded-md" id="imageDiv" on:click={select}>
     <img class="object-contain w-full h-full" src="{URL.createObjectURL(file)}" alt=""/>
 
     <div class="flex flex-col absolute bottom-0 left-0 right-0 px-1 py-2 bg-gray-800 opacity-0 hover:opacity-70 max-h-full">
