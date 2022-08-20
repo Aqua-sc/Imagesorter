@@ -40,13 +40,13 @@
 			<p class="break-words text-ellipsis"><b> Name: </b> {file.name}</p>
 			<p><b> Size: </b> {humanFileSize(file.size)}</p>
 			<p><b> Dimensions: </b> {height} x {width}</p>
-			<div class="flex w-full text-center">
+			<div class="flex text-center">
 				<p class="py-2"><b> Category: </b></p>
 				<button
-					class="flex relative inline-flex items-center justify-center p-1 mb-2 mr-2 ml-1 w-full text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
+					class="flex relative inline-flex items-center justify-center p-1 mb-2 mr-2 ml-1  text-sm font-medium text-gray-900 rounded-lg group bg-gradient-to-br from-cyan-500 to-blue-500 group-hover:from-cyan-500 group-hover:to-blue-500 hover:text-white dark:text-white focus:ring-4 focus:outline-none focus:ring-cyan-200 dark:focus:ring-cyan-800"
 				>
 					<span
-						class="relative px-2.5 py-2.5 w w-full transition-all ease-in duration-75 bg-white bg-zinc-600 rounded-md group-hover:bg-opacity-0">
+						class="relative px-2.5 py-2.5 transition-all ease-in duration-75 bg-white bg-zinc-600 rounded-md group-hover:bg-opacity-0">
 						Default
                         
 					</span>
