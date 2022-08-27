@@ -1,13 +1,14 @@
 <script> 
     import { createEventDispatcher } from 'svelte'
-    export let file
+    export let data
     export let selected
 
+    let file = data.file
     
     const dispatch = createEventDispatcher();
     function select() {
         dispatch('selected', {
-            file: file
+            data: data
         });
     }
 </script>

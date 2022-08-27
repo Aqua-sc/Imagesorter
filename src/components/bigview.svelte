@@ -1,14 +1,17 @@
 <script>
 	import Multibutton from "./multibutton.svelte";
-	export let file;
+	export let data;
 	let height;
 	let width;
 	let category;
+	let file;
 
 	$: {
-		if (file !== undefined) {
+		if (data !== undefined) {
 			let image = new Image();
-			image.src = URL.createObjectURL(file);
+			file = data.file;
+			image.src = URL.createObjectURL(file);		
+			console.log(file);
 			image.onload = function () {
 				height = image.width;
 				width = image.height;

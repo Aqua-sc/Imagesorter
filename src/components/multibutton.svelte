@@ -1,11 +1,11 @@
 <script>
 
     let options = [ 
-                    { name: "Default", color: "white"},
-                    { name: "OPTIE 1", color: "teal-300"}, 
-                    { name: "OPTIE 2", color: "red-500"}, 
-                    { name: "OPTIE 3", color: "green-500"},
-                    { name: "OPTIE 4", color: "fuchsia-400"}
+                    { name: "Default", color: "white", id: "1"},
+                    { name: "OPTIE 1", color: "teal-300", id: "2"}, 
+                    { name: "OPTIE 2", color: "red-500", id: "3"}, 
+                    { name: "OPTIE 3", color: "green-500", id: "4"},
+                    { name: "OPTIE 4", color: "fuchsia-400", id: "5"}
                 ];
                 
     let show = false
