@@ -1,6 +1,13 @@
 module.exports = {
   mode: 'jit',
-  purge: [ './src/**/*.svelte' ],
+  content: [ './src/**/*.svelte' ],
+  safelist: [
+    'bg-teal-300',
+    'bg-red-500',
+    'bg-green-500',
+    'bg-fuchsia-400',
+    'bg-white'
+  ], 
 
   plugins: [
     require('@tailwindcss/line-clamp'),
