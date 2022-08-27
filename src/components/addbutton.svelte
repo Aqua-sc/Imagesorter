@@ -1,5 +1,5 @@
 <script>
-    import gallaray from "../stores/galleryImages";
+    import { gallarray } from "../stores/galleryImages";
     let files = [];
     function addFiles() {
         document.getElementById('folderselect').click()
@@ -7,7 +7,7 @@
 
     $: {
         if (files) {
-            gallaray.add(files);
+            gallarray.add(files);
         }
     }
         

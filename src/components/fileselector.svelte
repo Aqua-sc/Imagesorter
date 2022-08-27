@@ -1,6 +1,6 @@
 <script>
     
-    import gallarray from "../stores/galleryImages";
+    import { gallarray } from "../stores/galleryImages";
 
     let files = [];
 

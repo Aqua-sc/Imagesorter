@@ -1,5 +1,5 @@
 <script>
-    import gallarray from "../stores/galleryImages";
+    import { gallarray } from "../stores/galleryImages";
 </script>
 
 <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 py-2 rounded" on:click={() => gallarray.clear()} title="Remove All Files"> 

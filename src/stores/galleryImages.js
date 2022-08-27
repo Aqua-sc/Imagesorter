@@ -4,14 +4,14 @@ import { writable } from 'svelte/store';
 
 
 
-function createGallaray() {
+function createGallarray() {
     const { subscribe, set, update } = writable([]);
     return {
         subscribe, 
         add: (files) => {
             files = [...files];
             files = files.filter(file => file.type.startsWith("image/"));
-            files = files.map(file => new GalleryImage(file, 4, 10));
+            files = files.map(file => new GalleryImage(file, 4, { name: "Default", color: "sky-500", id: 1}));
             update(data => [...data, ...files]);
         },
         set, 
@@ -19,5 +19,9 @@ function createGallaray() {
     };
 }
 
-let gallaray = createGallaray();
-export default gallaray;
+let gallarray = createGallarray();
+
+let selected_img = writable(undefined);
+
+
+export { gallarray, selected_img };

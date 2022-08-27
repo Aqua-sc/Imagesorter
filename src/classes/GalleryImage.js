@@ -4,4 +4,10 @@ export class GalleryImage {
         this.id = id;
         this.category = category
     }
+
+    setCategory(category) {
+        this.category = category;
+        this = this;
+        console.log(this.category)
+    }
 }
