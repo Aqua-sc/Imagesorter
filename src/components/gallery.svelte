@@ -3,23 +3,27 @@
     import FileSelectBox from "./fileselector.svelte"
     import ImageCard from "./imageCard.svelte"
     import Bigview from "./bigview.svelte"
-    import gallaray from "../stores/galleryImages";
+    import { gallarray, selected_img} from "../stores/galleryImages";
     import Removebutton from "./removebutton.svelte";
     import Addbutton from "./addbutton.svelte";
     
     
-    let gallery=[]
+    let gallery=[];
+    let selected;
 
-    gallaray.subscribe((data) => {
+    gallarray.subscribe((data) => {
         gallery = data;
     });
     
-    let selected_img
+    selected_img.subscribe((data) => {
+        selected = data;
+    })
+
     function newSelect(event) {
         if (event.detail.data === selected_img) {
-            selected_img = undefined;
+            selected_img.update(data => undefined);
         } else {
-            selected_img = event.detail.data
+            selected_img.update(data => event.detail.data);
         }
     }
 
@@ -38,12 +42,12 @@
         <div class="flex flex-col gap-2 p-2 overscroll-contain overflow-y-auto min-w-pptx-image flex-shrink-0">
             {#each gallery as image}
                 <div> 
-                    <ImageCard on:selected={newSelect} data={image} selected={selected_img === image}/>
+                    <ImageCard on:selected={newSelect} data={image} selected={selected === image}/>
                 </div>
             {/each}
         </div>
         <div class="overflow-hidden">
-            <Bigview data={selected_img}/>
+            <Bigview data={selected}/>
             <div class="absolute inset-x-pptx-image bottom-1 py-1 px-2">
                 <Addbutton/>
                 <Removebutton/>

@@ -6,7 +6,12 @@ module.exports = {
     'bg-red-500',
     'bg-green-500',
     'bg-fuchsia-400',
-    'bg-white'
+    'bg-white',
+    'bg-teal-300',
+    'border-red-500',
+    'border-green-500',
+    'border-fuchsia-400',
+    'border-white'
   ], 
 
   plugins: [

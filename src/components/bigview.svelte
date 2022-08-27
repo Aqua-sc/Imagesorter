@@ -26,7 +26,7 @@
 </script>
 
 <div class="flex p-3 gap-4">
-	<div class="flex h-selected w-selected border-4 border-rose-500 rounded-sm place-items-center">
+	<div class="flex h-selected w-selected border-4 border-black rounded-sm place-items-center">
 		{#if file}
 			<img
 				class="object-contain h-full w-full"

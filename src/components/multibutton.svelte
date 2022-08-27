@@ -1,16 +1,24 @@
 <script>
+    import categories from '../stores/categories';
+    import { selected_img } from '../stores/galleryImages';
+    let options = [];
 
-    let options = [ 
-                    { name: "Default", color: "white", id: "1"},
-                    { name: "OPTIE 1", color: "teal-300", id: "2"}, 
-                    { name: "OPTIE 2", color: "red-500", id: "3"}, 
-                    { name: "OPTIE 3", color: "green-500", id: "4"},
-                    { name: "OPTIE 4", color: "fuchsia-400", id: "5"}
-                ];
+    categories.subscribe((data) => {
+        options = Object.values(data);
+        console.log(options);
+    });
                 
     let show = false
     let selected = "Default"
+    let image;
+    selected_img.subscribe((data) => {
+        image = data;
+    });
    
+   function thisOne(arg) {
+        selected = arg.name;
+        image.setCategory(arg);
+   }
 </script>
 
 
@@ -31,7 +39,7 @@
     {#if show}
         <div class="bg-sky-300 bg-opacity-10 border-1 border-emerald-600 rounded-lg place-items-center">
             {#each options as option}
-            <button class="flex gap-1 hover:bg-black hover:bg-opacity-5" on:click={() => selected = option.name}>
+            <button class="flex gap-1 hover:bg-black hover:bg-opacity-5" on:click={thisOne(option)}>
                 <div class="w-5 h-5 bg-{option.color} border-2 border-black"></div>
                 <p> {option.name} </p>
             </button>
