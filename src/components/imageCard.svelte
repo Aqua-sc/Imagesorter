@@ -8,12 +8,7 @@
     let category
     data.category.subscribe((data) => {category = data});
 
-    $: {
-        if (category) {
-            console.log(category);
-        }
-    }
-
+    
     const dispatch = createEventDispatcher();
     function select() {
         dispatch('selected', {
