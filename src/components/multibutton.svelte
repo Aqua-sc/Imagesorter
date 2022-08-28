@@ -12,8 +12,10 @@
     let image;
     let selected
     selected_img.subscribe((data) => {
-        image = data;
-        selected = data.categoryValue;
+        if (data) {
+            image = data;
+            selected = data.categoryValue;
+        }
     });
 
     
