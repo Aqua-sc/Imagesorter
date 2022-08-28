@@ -5,7 +5,8 @@ export class GalleryImage {
         this.file = file;
         this.id = id;
         this.category = writable(category);
-        
+        this.categoryValue
+        this.category.subscribe((data) => {this.categoryValue = data});
     }
 
     setCategory(category) {
