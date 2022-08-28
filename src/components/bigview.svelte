@@ -1,22 +1,23 @@
 <script>
 	import Multibutton from "./multibutton.svelte";
-	export let data;
+	import { selected_img } from "../stores/galleryImages";
 	let height;
 	let width;
-	let category;
 	let file;
 
-	$: {
+	selected_img.subscribe((data) => {
 		if (data !== undefined) {
 			let image = new Image();
 			file = data.file;
-			image.src = URL.createObjectURL(file);		
+			image.src = URL.createObjectURL(file);
 			image.onload = function () {
-				height = image.width;
-				width = image.height;
-			};
+	 			height = image.width;
+	 			width = image.height;
+	 		};
+		} else {
+			file = undefined;
 		}
-	}
+	})
 
 	function humanFileSize(size) {
 		var i = Math.floor(Math.log(size) / Math.log(1024));

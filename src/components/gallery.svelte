@@ -47,7 +47,7 @@
             {/each}
         </div>
         <div class="overflow-hidden">
-            <Bigview data={selected}/>
+            <Bigview/>
             <div class="absolute inset-x-pptx-image bottom-1 py-1 px-2">
                 <Addbutton/>
                 <Removebutton/>
