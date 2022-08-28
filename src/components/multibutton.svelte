@@ -31,7 +31,7 @@
 
 
 <div class="relative inline-block">
-    <button class="flex relative  items-center justify-center  pr-4 w-50 mr-2 ml-1  text-sm font-medium text-gray-900 rounded-sm group bg-gradient-to-br from-cyan-500 to-blue-500" on:click={() => show = !show}>
+    <button class="flex relative  items-center justify-center  pr-4 w-50 mr-2 ml-1  text-sm font-medium text-gray-900 rounded-sm group bg-gradient-to-br from-cyan-500 to-blue-500 border-{selected.color} border-2" on:click={() => show = !show}>
         <span class="relative px-2.5 py-2.5 transition-all ease-in duration-75bg-zinc-600 rounded-md group-hover:bg-opacity-0 text-white">
             {selected.name}    
         </span>
