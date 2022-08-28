@@ -11,7 +11,8 @@ module.exports = {
     'border-red-500',
     'border-green-500',
     'border-fuchsia-400',
-    'border-white'
+    'border-white',
+    'border-teal-300'
   ], 
 
   plugins: [

@@ -1,13 +1,14 @@
+import { writable } from 'svelte/store';
+
 export class GalleryImage {
     constructor(file, id, category) {
         this.file = file;
         this.id = id;
-        this.category = category
+        this.category = writable(category);
+        
     }
 
     setCategory(category) {
-        this.category = category;
-        this = this;
-        console.log(this.category)
+        this.category.set(category)
     }
 }

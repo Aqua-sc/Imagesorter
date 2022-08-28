@@ -1,10 +1,18 @@
 <script> 
     import { createEventDispatcher } from 'svelte'
+
     export let data
     export let selected
 
     let file = data.file;
-    let category = data.category;
+    let category
+    data.category.subscribe((data) => {category = data});
+
+    $: {
+        if (category) {
+            console.log(category);
+        }
+    }
 
     const dispatch = createEventDispatcher();
     function select() {
@@ -19,9 +27,9 @@
     <img class="object-contain w-full h-full" src="{URL.createObjectURL(file)}" alt=""/>
 
     <div class="flex flex-col absolute bottom-0 left-0 right-0 px-1 py-2 bg-gray-800 opacity-0 hover:opacity-70 max-h-full">
-        <p class="text-gray-300 text-center truncate"><strong>Name:</strong> {file.name}</p>
+        <p class="text-gray-300 text-center truncate" on:click={console.log(data.category)}><strong>Name:</strong> {file.name}</p>
     </div>
-</div>
+</div> 
 
 
     

@@ -20,7 +20,7 @@
     })
 
     function newSelect(event) {
-        if (event.detail.data === selected_img) {
+        if (event.detail.data === selected) {
             selected_img.update(data => undefined);
         } else {
             selected_img.update(data => event.detail.data);
