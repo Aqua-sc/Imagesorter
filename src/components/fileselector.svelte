@@ -7,6 +7,7 @@
     $: {
         if(files) {
             gallarray.add(files);
+            console.log(files);
         }
     }
 </script>

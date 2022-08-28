@@ -11,7 +11,6 @@
 			let image = new Image();
 			file = data.file;
 			image.src = URL.createObjectURL(file);		
-			console.log(file);
 			image.onload = function () {
 				height = image.width;
 				width = image.height;

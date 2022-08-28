@@ -5,7 +5,6 @@
 
     categories.subscribe((data) => {
         options = Object.values(data);
-        console.log(options);
     });
                 
     let show = false
