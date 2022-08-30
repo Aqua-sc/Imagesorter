@@ -1,13 +1,17 @@
 <script>
     
     import { gallarray } from "../stores/galleryImages";
+    
+   
+
+    
+
 
     let files = [];
 
     $: {
         if(files) {
             gallarray.add(files);
-            console.log(files);
         }
     }
 </script>
