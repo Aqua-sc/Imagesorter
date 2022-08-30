@@ -6,6 +6,7 @@
     import { gallarray, selected_img} from "../stores/galleryImages";
     import Removebutton from "./removebutton.svelte";
     import Addbutton from "./addbutton.svelte";
+    import Exportbutton from "./exportbutton.svelte";
     
     
     let gallery=[];
@@ -39,7 +40,7 @@
 
 <div class="overscroll-hidden">
     <div class="flex absolute left-0 gap-2 overscroll-contain overflow-hidden h-gallery">
-        <div class="flex flex-col gap-2 p-2 overscroll-contain overflow-y-auto min-w-pptx-image flex-shrink-0">
+        <div class="flex flex-col gap-2 p-2 overscroll-contain overflow-y-auto min-w-pptx-image flex-shrink-0 border-r">
             {#each gallery as image}
                 <div> 
                     <ImageCard on:selected={newSelect} data={image} selected={selected === image}/>
@@ -51,6 +52,7 @@
             <div class="absolute inset-x-pptx-image bottom-1 py-1 px-2">
                 <Addbutton/>
                 <Removebutton/>
+                <Exportbutton/>
             </div>
         </div>
     </div>
