@@ -25,6 +25,9 @@
 	"type": "module",
 	"dependencies": {
 		"@tailwindcss/line-clamp": "^0.4.0",
+		"client-zip": "^2.2.2",
+		"file-saver": "^2.0.5",
+		"jszip": "^3.10.1",
 		"tailwindcss-truncate-multiline": "^1.0.3"
 	}
 }
