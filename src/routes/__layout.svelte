@@ -2,6 +2,7 @@
 
 <script>
     import Nav from "../components/nav.svelte"
+    export const prerender = true
 </script>
 
 <head>
