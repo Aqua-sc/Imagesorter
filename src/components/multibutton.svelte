@@ -16,11 +16,10 @@
             image = data;
             selected = data.categoryValue;
         }
+        show = false;
     });
 
-    
-   
-   function thisOne(arg) {
+    function thisOne(arg) {
         selected = arg;
         image.setCategory(arg);
         show = false;
