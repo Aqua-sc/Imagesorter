@@ -8,7 +8,7 @@
 		"preview": "vite preview",
 		"lint": "prettier --check --plugin-search-dir=. . && eslint .",
 		"format": "prettier --write --plugin-search-dir=. .",
-		"deploy": "npx gh-pages -d dist"
+		"deploy": "npx gh-pages -d build"
 	},
 	"devDependencies": {
 		"@sveltejs/kit": "next",
