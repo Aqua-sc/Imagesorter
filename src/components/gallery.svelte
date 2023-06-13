@@ -7,6 +7,7 @@
     import Removebutton from "./removebutton.svelte";
     import Addbutton from "./addbutton.svelte";
     import Exportbutton from "./exportbutton.svelte";
+    import Categoryview from "./categoryview.svelte";
     
     
     let gallery=[];
@@ -38,8 +39,8 @@
     </div>
 {:else}
 
-<div class="overscroll-hidden">
-    <div class="flex absolute left-0 gap-2 overscroll-contain overflow-hidden h-gallery">
+<div id="gallery" class="overscroll-hidden w-full">
+    <div class="flex absolute left-0 gap-2 overscroll-contain overflow-hidden h-gallery w-full">
         <div class="flex flex-col gap-2 p-2 overscroll-contain overflow-y-auto min-w-pptx-image flex-shrink-0 border-r">
             {#each gallery as image}
                 <div> 
@@ -53,6 +54,9 @@
                 <Addbutton/>
                 <Removebutton/>
                 <Exportbutton/>
+            </div>
+            <div class="absolute bottom-5 right-5">
+                <Categoryview/>
             </div>
         </div>
     </div>

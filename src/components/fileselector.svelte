@@ -70,7 +70,7 @@
 
 <div on:dragover={dragOverHandler} on:drop={dropHandler} on:dragleave={dragLeaveHandler}>
     <label>
-        <div class="max-w-xl flex justify-center w-full h-32 px-4 transition bg-zinc-800 border-2 border-white-300 border-dashed rounded-md appearance-none  hover:border-gray-400 focus:outline-noneh {dragging ? "border-gray-400 cursor-copy" :""}">
+        <div class="max-w-xl flex justify-center w-full h-32 px-4 transition bg-zinc-800 border-2 border-white-300 border-dashed rounded-md appearance-none  hover:border-gray-400 focus:outline-noneh {dragging ? "border-gray-400 cursor-copy" :"cursor-pointer"}">
             <span class="flex items-center space-x-2">
                 <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6 text-teal-600" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor" stroke-width="2">
