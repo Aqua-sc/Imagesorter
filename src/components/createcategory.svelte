@@ -1,9 +1,14 @@
 <script>
   import { createEventDispatcher } from 'svelte';
+  import categories from '../stores/categories.js';
 
   let text = '';
   let color = '';
   let textcolor = '';
+
+
+  
+
 
   $: {
         if (color) {
@@ -19,6 +24,8 @@
 
   function confirmModal() {
     if (text == '' || color == '') return
+    let id = categories.getLength() + 1
+    categories.add(id, { name: text, color: color, id: id});
     closeModal();
   }
 
