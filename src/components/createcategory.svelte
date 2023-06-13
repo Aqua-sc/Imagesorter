@@ -24,8 +24,7 @@
 
   function confirmModal() {
     if (text == '' || color == '') return
-    let id = categories.getLength() + 1
-    categories.add(id, { name: text, color: color, id: id});
+    categories.add(text, color);
     closeModal();
   }
 

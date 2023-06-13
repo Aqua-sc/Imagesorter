@@ -4,10 +4,12 @@
     import ImageCard from "./imageCard.svelte"
     import Bigview from "./bigview.svelte"
     import { gallarray, selected_img} from "../stores/galleryImages";
+    import { onMount, onDestroy } from 'svelte';
     import Removebutton from "./removebutton.svelte";
     import Addbutton from "./addbutton.svelte";
     import Exportbutton from "./exportbutton.svelte";
     import Categoryview from "./categoryview.svelte";
+	import categories from "../stores/categories";
     
     
     let gallery=[];
@@ -20,6 +22,25 @@
     selected_img.subscribe((data) => {
         selected = data;
     })
+
+    onMount(() => {
+        window.addEventListener('keydown', handleKeyPress);
+    });
+
+    // Don't forget to remove the event listener when the component is unmounted
+    onDestroy(() => {
+        window.removeEventListener('keydown', handleKeyPress);
+    });
+
+    function handleKeyPress(event) {
+        let number = parseInt(event.key)
+        if (event.ctrlKey && selected && !isNaN(number) && categories.getById(number)) {
+            event.preventDefault();
+            // Check if the key combination you want to listen for is pressed
+            console.log(number)
+            selected.setCategory(number)
+        }
+    }
 
     function newSelect(event) {
         if (event.detail.data === selected) {

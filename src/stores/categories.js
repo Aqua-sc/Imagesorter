@@ -11,10 +11,11 @@ function createCategories() {
 
     return {
         subscribe, 
-        add: (id, category) => {
+        add: (name, color) => {
             update(data => {
+                let id = Math.max(...Object.keys(data))+1
                 const newData = { ...data }; // Create a copy of the existing data object
-                newData[id] = { ...category, id }; // Add the new category with the specified id
+                newData[id] = { name:name, color:color, id: id }; // Add the new category with the specified id
                 return newData; // Return the updated data object
             });
             length += 1;
