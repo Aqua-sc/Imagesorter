@@ -30,7 +30,6 @@
     }
 
     
-      
 </script>
 
 {#if gallery.length < 1}

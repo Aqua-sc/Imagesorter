@@ -14,23 +14,25 @@
     selected_img.subscribe((data) => {
         if (data) {
             image = data;
-            selected = data.categoryValue;
+            data.categoryid.subscribe((id) => {
+                selected = categories.getById(id);
+            })
         }
         show = false;
     });
 
     function thisOne(arg) {
         selected = arg;
-        image.setCategory(arg);
-        show = false;
-   }
+        image.setCategory(arg.id);
+        show = !show;
+    }
 </script>
 
 
 
 
 <div class="relative inline-block">
-    <button class="flex relative  items-center justify-center  pr-4 w-50 mr-2 ml-1  text-sm font-medium text-gray-900 rounded-sm group bg-gradient-to-br from-cyan-500 to-blue-500 border-{selected.color} border-2" on:click={() => show = !show}>
+    <button class="flex relative  items-center justify-center  pr-4 w-50 mr-2 ml-1  text-sm font-medium text-gray-900 rounded-sm group bg-gradient-to-br from-cyan-500 to-blue-500  border-2" on:click={() => show = !show} style="border-color: {selected.color}">
         <span class="relative px-2.5 py-2.5 transition-all ease-in duration-75bg-zinc-600 rounded-md group-hover:bg-opacity-0 text-white">
             {selected.name}    
         </span>
@@ -45,7 +47,7 @@
         <div class="bg-sky-300 bg-opacity-10 border-1 border-emerald-600 rounded-lg place-items-center">
             {#each options as option}
             <button class="flex gap-1 hover:bg-black hover:bg-opacity-5" on:click={thisOne(option)}>
-                <div class="w-5 h-5 bg-{option.color} border-2 border-black"></div>
+                <div class="w-5 h-5 border-2 border-black" style="background-color: {option.color}"></div>
                 <p> {option.name} </p>
             </button>
             {/each}

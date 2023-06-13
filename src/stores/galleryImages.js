@@ -11,7 +11,7 @@ function createGallarray() {
         add: (files) => {
             files = [...files];
             files = files.filter(file => file.type.startsWith("image/"));
-            files = files.map(file => new GalleryImage(file, 4, { name: "Default", color: "sky-500", id: 1}));
+            files = files.map(file => new GalleryImage(file, 0));
             update(data => [...data, ...files]);
         },
         set, 

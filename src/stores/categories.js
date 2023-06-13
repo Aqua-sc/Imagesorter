@@ -1,16 +1,12 @@
+import { setResponse } from '@sveltejs/kit/node';
 import { writable } from 'svelte/store';
-
 
 function createCategories() {
     let arrayi = { 
-        1 : { name: "Default", color: "#FFFFFF", id: 1},
-        2 : { name: "Drinks", color: "#5eead4", id: 2}, 
-        3 : { name: "Fruit", color: "#ef4444", id: 3}, 
-        4 : { name: "Trees", color: "#22c55e", id: 4},
-        5 : { name: "Flowers", color: "#e879f9", id: 5}
+        0: { name: "Default", color: "#FFFFFF", id: 0 }
     };
 
-    let length = 5;
+    let length = 1;
     const { subscribe, set, update } = writable(arrayi);
 
     return {
@@ -22,12 +18,20 @@ function createCategories() {
                 return newData; // Return the updated data object
             });
             length += 1;
-        }
-        ,
+        },
         set, 
         clear: () => set([]),
-        getById: (id) => {return arrayi.get(id)},
-        getLength: () => {return length}
+        getById: (id) => {
+            let category = null;
+            
+            const unsubscribe = categories.subscribe(data => {
+                category = data[id];
+            });
+            unsubscribe(); // Unsubscribe immediately to avoid unnecessary updates
+            return category;
+        }
+        ,
+        getLength: () => length
     };
 }
 

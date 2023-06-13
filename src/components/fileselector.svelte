@@ -61,7 +61,6 @@
     function dragOverHandler(ev) {
         // Prevent default behavior (Prevent file from being opened)
         ev.preventDefault();
-        console.log("1")
         dragging = true
     }
 

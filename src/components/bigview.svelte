@@ -11,9 +11,9 @@
 			file = data.file;
 			image.src = URL.createObjectURL(file);
 			image.onload = function () {
-	 			height = image.width;
-	 			width = image.height;
-	 		};
+				height = image.width;
+				width = image.height;
+			};
 		} else {
 			file = undefined;
 		}

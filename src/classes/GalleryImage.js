@@ -1,15 +1,15 @@
 import { writable } from 'svelte/store';
 
 export class GalleryImage {
-    constructor(file, id, category) {
+    constructor(file, id) {
         this.file = file;
-        this.id = id;
-        this.category = writable(category);
-        this.categoryValue
-        this.category.subscribe((data) => {this.categoryValue = data});
+        this.categoryid = writable(id);
+
     }
 
-    setCategory(category) {
-        this.category.set(category)
+    setCategory(categoryid) {
+        console.log(categoryid)
+        this.categoryid.set(categoryid)
     }
+
 }
