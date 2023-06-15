@@ -25,7 +25,7 @@
 	}
 </script>
 
-<div class="flex p-3 gap-4">
+<div class="flex p-3 gap-4 px-2">
 	<div class="flex h-selected w-selected border-4 border-black rounded-sm place-items-center">
 		{#if file}
 			<img
