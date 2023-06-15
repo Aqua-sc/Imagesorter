@@ -16,7 +16,7 @@ export class Keycombination {
     }
 
     isValid() {
-        return key != ''
+        return this.key != ''
     }
     
     clear() {

@@ -28,7 +28,7 @@
 
   function confirmModal() {
     if (text == '' || color == '') return
-    categories.add(text, color);
+    categories.add(text, color, keycombination.isValid() ? keycombination : undefined);
     closeModal();
   }
 
@@ -56,21 +56,29 @@
   }
 
   function handleKeyDown(event) {
-    event.preventDefault()
-    keycombination.altkey = event.altKey || keycombination.altkey
-    keycombination.ctrlkey = event.ctrlKey || keycombination.ctrlkey
-    keycombination.shiftkey = event.shiftKey || keycombination.shiftkey
-      
-      
-    if (!isSpecialkey(event.key)) {
-      keycombination.key = event.code
-      if (keycombination.key.startsWith("Key")) keycombination.key = keycombination.key.substring(3)
+    if (registering_shortcut) {
+      shortcut_error = ''
+      event.preventDefault()
+      keycombination.altkey = event.altKey || keycombination.altkey
+      keycombination.ctrlkey = event.ctrlKey || keycombination.ctrlkey
+      keycombination.shiftkey = event.shiftKey || keycombination.shiftkey
+        
+        
+      if (!isSpecialkey(event.key)) {
+        keycombination.key = event.key
+        if (keycombination.key.startsWith("Key")) keycombination.key = keycombination.key.substring(3)
+      }
+
+
+      if (event.key === "Backspace") keycombination.clear()
+      if (event.key === "Enter") {
+        if (keycombination.isValid()) registering_shortcut = false
+        else shortcut_error = "\nA valid shortcuts consists of:\n - zero or more modifier keys (Alt/Shift/Ctrl)\n - any other non-special key"
+        
+      }
+      keycombination = keycombination
     }
-
-
-    if (event.key === "Backspace") keycombination.clear()
-    if (event.key === "Enter") registering_shortcut = false //TODO: check for valid keycombination
-    keycombination = keycombination
+    
       
   }
 
@@ -96,15 +104,17 @@
 
 
   let registering_shortcut = false
+  let cleared = false
+  let shortcut_error = ''
 </script>
 
 
 {#if registering_shortcut}
-<div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center z-50">
+<div class="fixed top-0 left-0 w-screen h-screen flex items-center justify-center z-50 text-center">
   <div class="">
-    <p class="text-yellow-300 text-2xl">{keycombination}</p>
-    <p class="text-gray-700 text-lg">Press "Enter" to confirm"</p> 
-    <p class="text-gray-700 text-lg">Press "Backspace" to clear</p> 
+    <p class="text-yellow-300 text-2xl text-center">{keycombination}</p>
+    <p class="text-gray-400 text-sm text-center">Press "Enter" to confirm, "Backspace" to clear</p> 
+    <p class="text-red-400 text-sm text-center whitespace-pre-line">{shortcut_error}</p>
   </div>
 </div>
 
@@ -132,7 +142,23 @@
     <div class="mb-4 flex items-center">
       <label for="color-input" class="w-20">Shortcut:</label>
       <label class="flex-1 items-center">
-          <button class="rounded bg-transparent text-blue-700" on:click={() => registering_shortcut = true} disabled={registering_shortcut}><u>Register shortcut</u></button>
+        {#if !keycombination.isValid() || registering_shortcut}
+          <button class="rounded bg-transparent text-blue-700" on:click={() => {registering_shortcut = true; registering_shortcut = !cleared; cleared = false}} disabled={registering_shortcut || keycombination.isValid()}><u>Register shortcut</u></button>
+        {:else}
+          <div class="flex gap-2">
+            <p>{keycombination}</p>
+            <button class="text-gray-700" on:click={() => {keycombination.clear(); registering_shortcut = true}}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />
+              </svg>
+            </button>
+            <button class="text-gray-700" on:click={() => {keycombination.clear(); keycombination=keycombination; cleared=true}}>
+              <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15 12H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+              </svg>              
+            </button>
+          </div>
+        {/if}
       </label>
     </div>
     

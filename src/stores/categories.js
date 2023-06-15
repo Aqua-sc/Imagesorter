@@ -3,7 +3,7 @@ import { writable } from 'svelte/store';
 
 function createCategories() {
     let arrayi = { 
-        0: { name: "Default", color: "#FFFFFF", id: 0 }
+        0: { name: "Default", color: "#FFFFFF", id: 0, shotcut: undefined}
     };
 
     let length = 1;
@@ -11,11 +11,11 @@ function createCategories() {
 
     return {
         subscribe, 
-        add: (name, color) => {
+        add: (name, color, shortcut) => {
             update(data => {
                 let id = Math.max(...Object.keys(data))+1
                 const newData = { ...data }; // Create a copy of the existing data object
-                newData[id] = { name:name, color:color, id: id }; // Add the new category with the specified id
+                newData[id] = { name:name, color:color, id: id, shortcut: shortcut }; // Add the new category with the specified id
                 return newData; // Return the updated data object
             });
             length += 1;
