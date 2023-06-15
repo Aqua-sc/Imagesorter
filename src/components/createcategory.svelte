@@ -12,6 +12,26 @@
 
     return (specialKeys.includes(key))
   }
+  
+  // Created by chatGPT
+  export function getContrastColor(bgColor) {
+    if (!bgColor) return '#000'; // Default to black if no background color is provided
+
+    // Convert the hexadecimal color to RGB values
+    const hexToRGB = (hex) =>
+      hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (_, r, g, b) => `#${r}${r}${g}${g}${b}${b}`)
+        .substring(1)
+        .match(/.{2}/g)
+        .map((x) => parseInt(x, 16));
+
+    const [r, g, b] = hexToRGB(bgColor);
+
+    // Calculate the relative luminance of the color
+    const luminance = (r * 0.299 + g * 0.587 + b * 0.114) / 255;
+
+    // Determine the contrast color based on the luminance value
+    return luminance > 0.5 ? '#000' : '#fff';
+  }
 
 </script>
 
@@ -107,25 +127,7 @@
       
   }
 
-  // Created by chatGPT
-  function getContrastColor(bgColor) {
-    if (!bgColor) return '#000'; // Default to black if no background color is provided
-
-    // Convert the hexadecimal color to RGB values
-    const hexToRGB = (hex) =>
-      hex.replace(/^#?([a-f\d])([a-f\d])([a-f\d])$/i, (_, r, g, b) => `#${r}${r}${g}${g}${b}${b}`)
-        .substring(1)
-        .match(/.{2}/g)
-        .map((x) => parseInt(x, 16));
-
-    const [r, g, b] = hexToRGB(bgColor);
-
-    // Calculate the relative luminance of the color
-    const luminance = (r * 0.299 + g * 0.587 + b * 0.114) / 255;
-
-    // Determine the contrast color based on the luminance value
-    return luminance > 0.5 ? '#000' : '#fff';
-  }
+ 
 
 
   let registering_shortcut = false
