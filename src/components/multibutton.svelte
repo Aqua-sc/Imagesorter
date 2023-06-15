@@ -2,20 +2,24 @@
     import categories from '../stores/categories';
     import { selected_img } from '../stores/galleryImages';
     let options = [];
+    let selected = undefined;
+    let selectedid = 0;
 
     categories.subscribe((data) => {
         options = Object.values(data);
+        selected = categories.getById(selectedid)
     });
                 
     let show = false
 
     let image;
-    let selected
+    
     selected_img.subscribe((data) => {
         if (data) {
             image = data;
             data.categoryid.subscribe((id) => {
                 selected = categories.getById(id);
+                selectedid = id
             })
         }
         show = false;
@@ -44,11 +48,11 @@
     </button>
     
     {#if show}
-        <div class="bg-sky-300 bg-opacity-10 border-1 border-emerald-600 rounded-lg place-items-center">
+        <div class="bg-sky-300 bg-opacity-10 border-1 border-emerald-600 rounded-lg place-items-center pb-1 pt-1">
             {#each options as option}
-            <button class="flex gap-1 hover:bg-black hover:bg-opacity-5" on:click={thisOne(option)}>
-                <div class="w-5 h-5 border-2 border-black" style="background-color: {option.color}"></div>
-                <p> {option.name} </p>
+            <button class="flex gap-1 pl-1 text-center items-center overscroll contain hover:bg-black hover:bg-opacity-5 w-full" on:click={thisOne(option)} >
+                <div class="rounded w-5 h-5 border-2 border-black" style="background-color: {option.color}"></div>
+                <p style="max-width: 18vw"> {option.name} </p>
             </button>
             {/each}
         </div>

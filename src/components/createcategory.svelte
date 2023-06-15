@@ -21,12 +21,13 @@
 	import { Keycombination } from '../classes/Keycombination.js';
   import { onMount, onDestroy } from 'svelte';
 
-
-  let text = '';
-  let color = '';
+  export let category
+  let text = category ? category.name : '';
+  let color = category ? category.color : '';
   let textcolor = '';
-  let keycombination = new Keycombination()
+  let keycombination = category ? category.shortcut : new Keycombination()
   let confirm_error = '';
+  
 
 
   
@@ -49,7 +50,7 @@
       confirm_error = 'Name cannot be empty'
       return
     }
-    if (!categories.isUniqueName(text)) {
+    if (!categories.isUniqueName(text) && text != category.name) {
       confirm_error = 'A category with this name already exists'
       return
     }
@@ -57,7 +58,12 @@
       confirm_error = 'Color cannot be empty'
       return
     }
-    categories.add(text, color, keycombination.isValid() ? keycombination : new Keycombination());
+
+    if (!category) {
+      categories.add(text, color, keycombination.isValid() ? keycombination : new Keycombination());
+    } else {
+      categories.update({...category, name: text, color: color, shortcut: keycombination})
+    }
     closeModal();
   }
 
@@ -125,6 +131,11 @@
   let registering_shortcut = false
   let cleared = false
   let shortcut_error = ''
+
+  function deletecategory() {
+    categories.delete(category.id)
+    closeModal()
+  }
 </script>
 
 
@@ -141,7 +152,12 @@
 
 <div class="fixed inset-0 flex items-center justify-center z-40 {registering_shortcut ? "blur-lg" : ""}">
   <div class="bg-zinc-400 border-4 border-sky-500 p-6 rounded shadow">
-    <h2 class="text-lg font-semibold mb-4">Create category</h2>
+    <div class="flex gap-2 text-center">
+      <h2 class="text-lg font-semibold mb-4 text-center">{category ? "Edit" : "Create"} category</h2>
+      {#if category && category.id == 0}
+        <h3 class="text-base text-center" style="margin-top: 0.4px">(default)</h3>
+      {/if}
+    </div>
 
     <div class="mb-4 flex items-center">
       <label for="text-input" class="w-20">Name:</label>
@@ -181,8 +197,15 @@
       </label>
     </div>
     
-    <div class="flex justify-end">
-      <button class="mr-2 px-4 py-2 rounded bg-gray-300 {registering_shortcut ? "" : "hover:bg-gray-400"}" on:click={closeModal} disabled={registering_shortcut}>Cancel</button>
+    <div class="flex justify-center">
+      {#if category}
+        <button class="bg-red-500 mr-2 px-3 py-2 rounded text-white disabled:text-gray-300 hover:bg-red-700 disabled:bg-red-900 disabled:cursor-not-allowed" title={category.id == 0 ? "Cannot delete default category" : "Delete"} disabled={category.id == 0} on:click={deletecategory}>
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+          </svg>
+      </button>
+      {/if}
+      <button class="mr-2 px-4 py-2 rounded bg-gray-300 border-gray-300 border-2 {registering_shortcut ? "" : "hover:bg-gray-400 hover"}" on:click={closeModal} disabled={registering_shortcut}>Cancel</button>
       <button class="px-4 py-2 rounded bg-blue-500 text-white {registering_shortcut ? "" : "hover:bg-blue-600"}" on:click={confirmModal} disabled={registering_shortcut}>Confirm</button>
     </div>
     <p class="text-red-600 text-center whitespace-pre-line {confirm_error ? "pt-4" : ""} ">{confirm_error}</p>

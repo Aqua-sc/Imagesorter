@@ -7,8 +7,12 @@
 
     let file = data.file;
     let category
-    data.categoryid.subscribe((data) => {category = categories.getById(data)});
-
+    let categoryid
+    data.categoryid.subscribe((data) => {category = categories.getById(data); categoryid = data});
+    categories.subscribe((data) => {
+            category = categories.getById(categoryid)
+        }
+    )
     
     const dispatch = createEventDispatcher();
     function select() {

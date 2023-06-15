@@ -14,6 +14,17 @@ function createGallarray() {
             files = files.map(file => new GalleryImage(file, 0));
             update(data => [...data, ...files]);
         },
+        updateAfterDelete: (id) => {
+            update(data => {
+                data.forEach(a => {
+                    if (a.getCategory().id == id) {
+                        console.log("ofund")
+                        a.setCategory(0)
+                    }
+                })
+                return data
+            })
+        },
         set, 
         clear: () => set([])
     };

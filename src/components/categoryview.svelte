@@ -8,7 +8,7 @@
         options = Object.values(data);  
     });
 
-    import Modal from './createcategory.svelte';
+    import CategoryWindow from './createcategory.svelte';
 
     let showModal = false;
     showcreatecategory.subscribe((data) => {
@@ -19,6 +19,7 @@
     }
     function handleCloseModal() {
         showcreatecategory.set(false)
+        pressedcategory = undefined
     }
 
 
@@ -32,24 +33,28 @@
     }
     
     let maxheight = `calc(65vh - 10px)`;
-
+    let pressedcategory
 </script>
 
 {#if showModal}
-    <Modal on:close={handleCloseModal} />
+    <CategoryWindow on:close={handleCloseModal} category={pressedcategory}/>
 {/if}
 
 <div class="flex-col justify-between h-full overscroll-contain overflow-hidden">
     {#if show }
-        <div transition:slide class="absolute right-5 bg-sky-300 bg-opacity-10 border-1 p-1 border-emerald-600 rounded-lg place-items-center overflow-y-auto min-w-max" style="max-height: {maxheight}; bottom: {bottomoffset}px">
+        <div transition:slide class="absolute right-1 bg-sky-300 bg-opacity-10 border-1 p-1 border-emerald-600 rounded-lg place-items-center overflow-y-auto min-w-max" style="max-height: {maxheight}; bottom: {bottomoffset}px">
             {#each options as option}
-            <div class="flex gap-1 pl-1 text-center items-center overscroll contain" >
+            <button class="flex gap-1 pl-1 pr-1 pt-1 text-center items-center overscroll contain hover:bg-black hover:bg-opacity-5 w-full" on:click={() => {pressedcategory = option; openModal()}} >
                 <div class="rounded w-5 h-5 border-2 border-black" style="background-color: {option.color}"></div>
                 <p style="max-width: 18vw"> {option.name} <i>{option.shortcut.isValid() ? `(${option.shortcut.toString().trim()})` : ''}</i></p>
-            </div>
+            </button>
             {/each}
-            <button class="flex gap-1 pl-1 text-center items-center" on:click={openModal}>
-                Add category
+            <button class="flex gap-1 pl-1 text-center items-center hover:bg-black hover:bg-opacity-5 w-full justify-center" on:click={openModal}>
+                <div>
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                    </svg>
+                </div>
             </button>
         </div>
     {/if}

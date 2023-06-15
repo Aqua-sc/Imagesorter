@@ -1,6 +1,8 @@
 import { setResponse } from '@sveltejs/kit/node';
 import { writable } from 'svelte/store';
 import { Keycombination } from '../classes/Keycombination';
+import { gallarray } from './galleryImages';
+
 
 function createCategories() {
     let arrayi = { 
@@ -20,6 +22,28 @@ function createCategories() {
                 return newData; // Return the updated data object
             });
             length += 1;
+        },
+        update: (category) => {
+            update(data => {
+                const newData = {...data}
+                newData[category.id] = category
+                return newData;
+            })
+            categories = categories
+        },
+        delete: (id) => {
+            update(data => {
+                console.log(id)
+                console.log(data)
+                const newData = {...data}
+                if (Object.keys(newData).length > 1) {
+                    delete newData[id]
+                    gallarray.updateAfterDelete(id)
+                }
+                console.log(newData)
+                return newData;
+            })
+            categories = categories
         },
         set, 
         clear: () => set([]),
