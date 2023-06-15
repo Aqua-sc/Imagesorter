@@ -30,14 +30,6 @@
     
     selected_img.subscribe((data) => {
         selected = data;
-        let divRef = selected ? selected.divRef : undefined
-        if (divRef) {
-            const scrollTop = scrollablediv.scrollTop;
-            const containerHeight = scrollablediv.clientHeight;
-            if (divRef.offsetTop >= scrollTop && divRef.offsetTop + divRef.offsetHeight <= scrollTop + containerHeight) return
-            console.log(false)
-            scrollablediv.scrollTop += divRef.offsetHeight+8
-        }
     })
 
     onMount(() => {
@@ -65,17 +57,26 @@
             }
         }
         
-        if (!showCreateCategory) {
+        if (!showCreateCategory && event.target.tagName !== 'INPUT') {
             if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
                 let index = gallery.indexOf(selected)
+                let modifier = 1
                 if (event.key === 'ArrowDown') {
                     selected = index+1 === gallery.length ? selected : gallery[index+1]
                     selected_img.update(_ => selected)
                 } else if ( event.key === 'ArrowUp' ) {
                     selected = index === 0 ? selected : gallery[index-1]
                     selected_img.update(_ => selected)
+                    modifier = (-1)
                 }
-
+                let divRef = selected ? selected.divRef : undefined
+                if (divRef) {
+                    const scrollTop = scrollablediv.scrollTop;
+                    const containerHeight = scrollablediv.clientHeight;
+                    if (divRef.offsetTop >= scrollTop && divRef.offsetTop + divRef.offsetHeight <= scrollTop + containerHeight) return
+                    console.log(false)
+                    scrollablediv.scrollTop += (divRef.offsetHeight+8) * modifier
+                }
             }
         }
     }
@@ -108,6 +109,9 @@
         </div>
         <div class="overflow-hidden">
             <Bigview/>
+            {#if selected}
+                <p class="px-2"><b>Image {gallery.indexOf(selected)+1}/{gallery.length}</b></p>
+            {/if}
             <div class="absolute inset-x-pptx-image bottom-1 py-1 px-2">
                 <Addbutton/>
                 <Removebutton/>
