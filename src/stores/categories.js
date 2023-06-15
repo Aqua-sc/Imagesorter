@@ -42,8 +42,17 @@ function createCategories() {
             })
             categories = categories
         },
+        clear: () => {
+            update(data => {
+                console.log('kzzd')
+                let newData = {...data}
+                newData = {0 : newData[0]}
+                console.log(newData)
+                return newData;
+            })
+            categories = categories
+        },
         set, 
-        clear: () => set([]),
         getById: (id) => {
             let category = null;
             
