@@ -13,7 +13,7 @@
     const dispatch = createEventDispatcher();
     function select() {
         dispatch('selected', {
-            data: data
+            data: data,
         });
     }
 </script>

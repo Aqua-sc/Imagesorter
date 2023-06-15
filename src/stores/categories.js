@@ -49,7 +49,6 @@ function createCategories() {
                 categorieslist = Object.values(data)
             });
             unsubscribe();
-            console.log(categorieslist)
             for (let i = 0; i <categorieslist.length; i++) {
                 if (combination.equals(categorieslist[i].shortcut)) {
                     return categorieslist[i]

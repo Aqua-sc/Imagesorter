@@ -22,6 +22,7 @@
     showcreatecategory.subscribe((data) => {
         showCreateCategory = data;
     })
+    let scrollablediv
 
     gallarray.subscribe((data) => {
         gallery = data;
@@ -29,6 +30,14 @@
     
     selected_img.subscribe((data) => {
         selected = data;
+        let divRef = selected ? selected.divRef : undefined
+        if (divRef) {
+            const scrollTop = scrollablediv.scrollTop;
+            const containerHeight = scrollablediv.clientHeight;
+            if (divRef.offsetTop >= scrollTop && divRef.offsetTop + divRef.offsetHeight <= scrollTop + containerHeight) return
+            console.log(false)
+            scrollablediv.scrollTop += divRef.offsetHeight+8
+        }
     })
 
     onMount(() => {
@@ -41,7 +50,6 @@
     });
 
     function handleKeyPress(event) {
-        console.log(event.key)
         //TODO: Only execute following code if the modal window is not active
         if (!showCreateCategory && event.target.tagName !== 'INPUT' && selected && !isSpecialkey(event.key)) {
             
@@ -50,7 +58,6 @@
             keycombination.ctrlkey = event.ctrlKey;
             keycombination.keycode = event.code;
 
-            console.log(keycombination)
             let category = categories.matchingShortcut(keycombination)
             if (category) {
                 event.preventDefault();
@@ -59,17 +66,16 @@
         }
         
         if (!showCreateCategory) {
-            if (event.key === 'ArrowDown') {
+            if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
                 let index = gallery.indexOf(selected)
-                console.log(index)
-                console.log(gallery.length)
-                selected = index+1 === gallery.length ? selected : gallery[index+1]
-                selected_img.update(_ => selected)
-            } else if ( event.key === 'ArrowUp' ) {
-                console.log("kaas2")
-                let index = gallery.indexOf(selected)
-                selected = index === 0 ? selected : gallery[index-1]
-                selected_img.update(_ => selected)
+                if (event.key === 'ArrowDown') {
+                    selected = index+1 === gallery.length ? selected : gallery[index+1]
+                    selected_img.update(_ => selected)
+                } else if ( event.key === 'ArrowUp' ) {
+                    selected = index === 0 ? selected : gallery[index-1]
+                    selected_img.update(_ => selected)
+                }
+
             }
         }
     }
@@ -93,10 +99,10 @@
 
 <div id="gallery" class="overscroll-hidden w-full">
     <div class="flex absolute left-0 gap-2 overscroll-contain overflow-hidden h-gallery w-full">
-        <div class="flex flex-col gap-2 p-2 overscroll-contain overflow-y-auto min-w-pptx-image flex-shrink-0 border-r">
+        <div bind:this={scrollablediv} class="flex flex-col gap-2 p-2 overscroll-contain overflow-y-auto min-w-pptx-image flex-shrink-0 border-r">
             {#each gallery as image}
-                <div> 
-                    <ImageCard on:selected={newSelect} data={image} selected={selected === image}/>
+                <div bind:this={image.divRef}> 
+                    <ImageCard on:selected={newSelect} data={image} selected={selected === image} />
                 </div>
             {/each}
         </div>

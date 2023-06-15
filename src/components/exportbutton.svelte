@@ -2,6 +2,7 @@
     import JSZip from 'jszip';
     import FileSaver from 'file-saver'
     import { gallarray } from "../stores/galleryImages";
+	import categories from '../stores/categories';
 
     let files=[]
     let name = ""
@@ -12,7 +13,7 @@
     function download() {
         if (name) {
             let zip = new JSZip();
-            files.forEach(a => zip.file(`${a.categoryValue.name}/${a.file.name}`, a.file));
+            files.forEach(a => zip.file(`${a.getCategory().name}/${a.file.name}`, a.file));
             zip.generateAsync({ type:  'blob'}).then(function (content) {
                 FileSaver.saveAs(content, `${name}.zip`);
             });
