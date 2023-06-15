@@ -41,7 +41,7 @@
 
 
 <div class="relative inline-block items-center justify-center">
-    <button class="flex relative  items-center justify-center  pr-4 mt-2 mr-3 ml-1  text-sm font-medium text-gray-900 rounded-lg group  h-9 border-2" on:click={() => show = !show} style="background-color: {selected.color}; border-color: {textcolor}">
+    <button class="flex relative  items-center justify-center  pr-4 mt-3 mr-3 ml-1  text-sm font-medium text-gray-900 rounded-lg group  h-9 border-2" on:click={() => show = !show} style="background-color: {selected.color}; border-color: {textcolor}">
         <span class="relative px-2.5 py-2.5 transition-all ease-in duration-75bg-zinc-600 rounded-md group-hover:bg-opacity-0" style="color: {textcolor}">
             {selected.name}    
         </span>

@@ -55,7 +55,7 @@
 			<p class="break-words text-ellipsis"><b> Name: </b> {file.name}</p>
 			<p><b> Size: </b> {humanFileSize(file.size)}</p>
 			<p><b> Dimensions: </b> {height} x {width}</p>
-			<div class="flex text-center items-center">
+			<div class="flex text-center">
 				<p class="py-2 mt-2"><b> Category: </b></p>
 				<Multibutton/>
 			</div>
