@@ -8,7 +8,7 @@
   let text = '';
   let color = '';
   let textcolor = '';
-  let keycombination = new Keycombination(false, false, false, '')
+  let keycombination = new Keycombination()
   let confirm_error = '';
 
 
@@ -40,7 +40,7 @@
       confirm_error = 'Color cannot be empty'
       return
     }
-    categories.add(text, color, keycombination.isValid() ? keycombination : undefined);
+    categories.add(text, color, keycombination.isValid() ? keycombination : new Keycombination());
     closeModal();
   }
 
@@ -78,7 +78,7 @@
         
       if (!isSpecialkey(event.key)) {
         keycombination.key = event.key
-        if (keycombination.key.startsWith("Key")) keycombination.key = keycombination.key.substring(3)
+        keycombination.keycode = event.code
       }
 
 
@@ -86,7 +86,7 @@
       if (event.key === "Enter") {
         if (keycombination.isValid()) registering_shortcut = false
         else shortcut_error = "\nA valid shortcuts consists of:\n - zero or more modifier keys (Alt/Shift/Ctrl)\n - any other non-special key"
-        
+        //TODO: Add check for duplicate shortcuts
       }
       keycombination = keycombination
     }

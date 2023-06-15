@@ -4,16 +4,23 @@
     import ImageCard from "./imageCard.svelte"
     import Bigview from "./bigview.svelte"
     import { gallarray, selected_img} from "../stores/galleryImages";
+    import {showcreatecategory} from '../stores/modal'
     import { onMount, onDestroy } from 'svelte';
     import Removebutton from "./removebutton.svelte";
     import Addbutton from "./addbutton.svelte";
     import Exportbutton from "./exportbutton.svelte";
     import Categoryview from "./categoryview.svelte";
 	import categories from "../stores/categories";
+	import { Keycombination } from "../classes/Keycombination";
     
     
     let gallery=[];
     let selected;
+    let keycombination = new Keycombination();
+    let showCreateCategory = false;
+    showcreatecategory.subscribe((data) => {
+        showCreateCategory = data;
+    })
 
     gallarray.subscribe((data) => {
         gallery = data;
@@ -33,13 +40,23 @@
     });
 
     function handleKeyPress(event) {
-        let number = parseInt(event.key)
-        if (event.ctrlKey && selected && !isNaN(number) && categories.getById(number)) {
-            event.preventDefault();
-            // Check if the key combination you want to listen for is pressed
-            console.log(number)
-            selected.setCategory(number)
+        //TODO: Only execute following code if the modal window is not active
+        if (!showCreateCategory) {
+            console.log("keypressed")
+            keycombination.altkey = event.altKey;
+            keycombination.shiftkey = event.shiftKey;
+            keycombination.ctrlkey = event.ctrlKey;
+            keycombination.keycode = event.code;
+
+            console.log(keycombination)
+            let category = categories.matchingShortcut(keycombination)
+            if (category) {
+                event.preventDefault();
+                console.log("categoryfound")
+                selected.setCategory(category.id)
+            }
         }
+        
     }
 
     function newSelect(event) {

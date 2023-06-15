@@ -1,9 +1,10 @@
 import { setResponse } from '@sveltejs/kit/node';
 import { writable } from 'svelte/store';
+import { Keycombination } from '../classes/Keycombination';
 
 function createCategories() {
     let arrayi = { 
-        0: { name: "Default", color: "#FFFFFF", id: 0, shotcut: undefined}
+        0: { name: "Default", color: "#FFFFFF", id: 0, shortcut: new Keycombination()}
     };
 
     let length = 1;
@@ -41,6 +42,20 @@ function createCategories() {
             });
             unsubscribe(); // Unsubscribe immediately to avoid unnecessary updates
             return unique
+        },
+        matchingShortcut: (combination) => {
+            let categorieslist = [];
+            const unsubscribe = categories.subscribe(data => {
+                categorieslist = Object.values(data)
+            });
+            unsubscribe();
+            console.log(categorieslist)
+            for (let i = 0; i <categorieslist.length; i++) {
+                if (combination.equals(categorieslist[i].shortcut)) {
+                    return categorieslist[i]
+                }
+            }
+            return undefined
         }
     };
 }

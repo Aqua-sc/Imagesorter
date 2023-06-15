@@ -1,5 +1,6 @@
 <script>
     import categories from '../stores/categories';
+    import {showcreatecategory} from '../stores/modal'
     let options = [];
     let show = false;
     categories.subscribe((data) => {
@@ -9,11 +10,14 @@
     import Modal from './createcategory.svelte';
 
     let showModal = false;
+    showcreatecategory.subscribe((data) => {
+        showModal = data;
+    })
     function openModal() {
-        showModal = true;
+        showcreatecategory.set(true)
     }
     function handleCloseModal() {
-        showModal = false;
+        showcreatecategory.set(false)
     }
 </script>
 

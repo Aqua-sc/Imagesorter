@@ -1,9 +1,10 @@
 export class Keycombination {
-    constructor(ctrlkey, shiftkey, altkey, key) {
+    constructor(ctrlkey=false, shiftkey=false, altkey=false, key='', keycode='') {
         this.ctrlkey = ctrlkey;
         this.shiftkey = shiftkey;
         this.altkey = altkey;
         this.key = key;
+        this.keycode = keycode
     }
 
     toString() {
@@ -24,5 +25,15 @@ export class Keycombination {
         this.shiftkey = false;
         this.altkey = false;
         this.key = '';
+        this.keycode = '';
+    }
+
+    equals(otherKeyCombination) {
+        return (
+            this.ctrlkey === otherKeyCombination.ctrlkey &&
+            this.shiftkey === otherKeyCombination.shiftkey &&
+            this.altkey === otherKeyCombination.altkey &&
+            this.keycode === otherKeyCombination.keycode
+        );
     }
 }
