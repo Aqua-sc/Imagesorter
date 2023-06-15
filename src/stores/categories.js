@@ -32,7 +32,16 @@ function createCategories() {
             return category;
         }
         ,
-        getLength: () => length
+        getLength: () => length,
+        isUniqueName: (name) => {
+            let unique = true
+            const unsubscribe = categories.subscribe(data => {
+                const existingNames = Object.values(data).map(obj => obj.name);
+                unique = !existingNames.includes(name)
+            });
+            unsubscribe(); // Unsubscribe immediately to avoid unnecessary updates
+            return unique
+        }
     };
 }
 

@@ -9,6 +9,7 @@
   let color = '';
   let textcolor = '';
   let keycombination = new Keycombination(false, false, false, '')
+  let confirm_error = '';
 
 
   
@@ -27,7 +28,18 @@
   }
 
   function confirmModal() {
-    if (text == '' || color == '') return
+    if (text == '') {
+      confirm_error = 'Name cannot be empty'
+      return
+    }
+    if (!categories.isUniqueName(text)) {
+      confirm_error = 'A category with this name already exists'
+      return
+    }
+    if (color == '') {
+      confirm_error = 'Color cannot be empty'
+      return
+    }
     categories.add(text, color, keycombination.isValid() ? keycombination : undefined);
     closeModal();
   }
@@ -126,16 +138,16 @@
 
     <div class="mb-4 flex items-center">
       <label for="text-input" class="w-20">Name:</label>
-      <input type="text" id="text-input" bind:value={text} class="flex-1 border border-gray-300 p-2 rounded" disabled={registering_shortcut}/>
+      <input type="text" id="text-input" bind:value={text} class="flex-1 border border-gray-300 p-2 rounded" disabled={registering_shortcut} on:input={() => confirm_error = ''}/>
     </div>
     
     <div class="mb-4 flex items-center">
       <label for="color-input" class="w-20">Color:</label>
       <label class="flex-1 items-center">
-        <div class="flex-1 h-8 rounded-md border-2 border-double border-black flex items-center justify-center" style="background-color: {color}">
+        <div class="flex-1 h-8 rounded-md border-2 border-double border-black flex items-center justify-center" style="background-color: {color} " on:input={() => confirm_error = ''}>
           <p class="text-center" style="color: {textcolor}">{color}</p>
         </div>
-        <input type="color" id="color-input" bind:value={color} class="sr-only" disabled={registering_shortcut}/>
+        <input type="color" id="color-input" bind:value={color} on:click={() => confirm_error= ''} class="sr-only" disabled={registering_shortcut}/>
       </label>
     </div>
 
@@ -166,6 +178,7 @@
       <button class="mr-2 px-4 py-2 rounded bg-gray-300 {registering_shortcut ? "" : "hover:bg-gray-400"}" on:click={closeModal} disabled={registering_shortcut}>Cancel</button>
       <button class="px-4 py-2 rounded bg-blue-500 text-white {registering_shortcut ? "" : "hover:bg-blue-600"}" on:click={confirmModal} disabled={registering_shortcut}>Confirm</button>
     </div>
+    <p class="text-red-600 text-center whitespace-pre-line {confirm_error ? "pt-4" : ""} ">{confirm_error}</p>
   </div>
 </div>
 
