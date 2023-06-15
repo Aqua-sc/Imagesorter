@@ -43,9 +43,9 @@
     {#if show }
         <div transition:slide class="absolute right-5 bg-sky-300 bg-opacity-10 border-1 p-1 border-emerald-600 rounded-lg place-items-center overflow-y-auto min-w-max" style="max-height: {maxheight}; bottom: {bottomoffset}px">
             {#each options as option}
-            <div class="flex gap-1 pl-1 text-center items-center">
+            <div class="flex gap-1 pl-1 text-center items-center overscroll contain" >
                 <div class="rounded w-5 h-5 border-2 border-black" style="background-color: {option.color}"></div>
-                <p> {option.name} </p>
+                <p style="max-width: 18vw"> {option.name} <i>{option.shortcut.isValid() ? `(${option.shortcut.toString().trim()})` : ''}</i></p>
             </div>
             {/each}
             <button class="flex gap-1 pl-1 text-center items-center" on:click={openModal}>
