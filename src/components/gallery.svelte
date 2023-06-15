@@ -12,6 +12,7 @@
     import Categoryview from "./categoryview.svelte";
 	import categories from "../stores/categories";
 	import { Keycombination } from "../classes/Keycombination";
+    import { isSpecialkey } from "./createcategory.svelte"
     
     
     let gallery=[];
@@ -40,10 +41,10 @@
     });
 
     function handleKeyPress(event) {
+        console.log(event.key)
         //TODO: Only execute following code if the modal window is not active
-        if (!showCreateCategory && event.target.tagName !== 'INPUT' && selected) {
+        if (!showCreateCategory && event.target.tagName !== 'INPUT' && selected && !isSpecialkey(event.key)) {
             
-            console.log("keypressed")
             keycombination.altkey = event.altKey;
             keycombination.shiftkey = event.shiftKey;
             keycombination.ctrlkey = event.ctrlKey;
@@ -53,11 +54,24 @@
             let category = categories.matchingShortcut(keycombination)
             if (category) {
                 event.preventDefault();
-                console.log("categoryfound")
                 selected.setCategory(category.id)
             }
         }
         
+        if (!showCreateCategory) {
+            if (event.key === 'ArrowDown') {
+                let index = gallery.indexOf(selected)
+                console.log(index)
+                console.log(gallery.length)
+                selected = index+1 === gallery.length ? selected : gallery[index+1]
+                selected_img.update(_ => selected)
+            } else if ( event.key === 'ArrowUp' ) {
+                console.log("kaas2")
+                let index = gallery.indexOf(selected)
+                selected = index === 0 ? selected : gallery[index-1]
+                selected_img.update(_ => selected)
+            }
+        }
     }
 
     function newSelect(event) {

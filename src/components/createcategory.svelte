@@ -1,3 +1,20 @@
+<script context="module">
+  export function isSpecialkey(key) {
+    const specialKeys = [
+        'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
+        'Control', 'Shift', 'Alt', 'Meta',  // Meta represents the Windows key (⌘ on macOS)
+        'Backspace', 'Enter',
+        'Tab', 'Escape',
+        'PageUp', 'PageDown', 'Home', 'End',
+        'Insert', 'Delete',
+        'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12'
+      ];
+
+    return (specialKeys.includes(key))
+  }
+
+</script>
+
 <script>
   import { createEventDispatcher } from 'svelte';
   import categories from '../stores/categories.js';
@@ -53,19 +70,9 @@
       window.removeEventListener('keydown', handleKeyDown);
   });
 
-  function isSpecialkey(key) {
-    const specialKeys = [
-        'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight',
-        'Control', 'Shift', 'Alt', 'Meta',  // Meta represents the Windows key (⌘ on macOS)
-        'Backspace', 'Enter',
-        'Tab', 'Escape',
-        'PageUp', 'PageDown', 'Home', 'End',
-        'Insert', 'Delete',
-        'F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12'
-      ];
+  
 
-    return (specialKeys.includes(key))
-  }
+  
 
   function handleKeyDown(event) {
     if (registering_shortcut) {
