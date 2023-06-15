@@ -41,7 +41,8 @@
 
     function handleKeyPress(event) {
         //TODO: Only execute following code if the modal window is not active
-        if (!showCreateCategory) {
+        if (!showCreateCategory && event.target.tagName !== 'INPUT' && selected) {
+            
             console.log("keypressed")
             keycombination.altkey = event.altKey;
             keycombination.shiftkey = event.shiftKey;

@@ -1,6 +1,7 @@
 <script>
     import categories from '../stores/categories';
     import {showcreatecategory} from '../stores/modal'
+    import { slide } from 'svelte/transition';
     let options = [];
     let show = false;
     categories.subscribe((data) => {
@@ -27,7 +28,7 @@
 
 <div class="flex-col justify-between h-full">
     {#if show }
-        <div class="bg-sky-300 bg-opacity-10 border-1 p-1  border-emerald-600 rounded-lg place-items-center">
+        <div transition:slide class="bg-sky-300 bg-opacity-10 border-1 p-1  border-emerald-600 rounded-lg place-items-center transition-opacity ease-linear duration-500">
             {#each options as option}
             <div class="flex gap-1 pl-1 text-center items-center">
                 <div class="rounded w-5 h-5 border-2 border-black" style="background-color: {option.color}"></div>
