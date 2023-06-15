@@ -33,14 +33,11 @@ function createCategories() {
         },
         delete: (id) => {
             update(data => {
-                console.log(id)
-                console.log(data)
                 const newData = {...data}
                 if (Object.keys(newData).length > 1) {
                     delete newData[id]
                     gallarray.updateAfterDelete(id)
                 }
-                console.log(newData)
                 return newData;
             })
             categories = categories

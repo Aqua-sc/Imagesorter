@@ -29,7 +29,6 @@
     let bottomoffset = 0
     $: {
         bottomoffset = showbutton ? showbutton.offsetTop + 47 : 0
-        console.log(bottomoffset)
     }
     
     let maxheight = `calc(65vh - 10px)`;

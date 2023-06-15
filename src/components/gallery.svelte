@@ -74,7 +74,6 @@
                     const scrollTop = scrollablediv.scrollTop;
                     const containerHeight = scrollablediv.clientHeight;
                     if (divRef.offsetTop >= scrollTop && divRef.offsetTop + divRef.offsetHeight <= scrollTop + containerHeight) return
-                    console.log(false)
                     scrollablediv.scrollTop += (divRef.offsetHeight+8) * modifier
                 }
             }
@@ -101,9 +100,9 @@
 <div id="gallery" class="overscroll-hidden w-full">
     <div class="flex absolute left-0 gap-2 overscroll-contain overflow-hidden h-gallery w-full">
         <div bind:this={scrollablediv} class="flex flex-col gap-2 p-2 overscroll-contain overflow-y-auto min-w-pptx-image flex-shrink-0 border-r">
-            {#each gallery as image}
+            {#each gallery as image (image.file)}
                 <div bind:this={image.divRef}> 
-                    <ImageCard on:selected={newSelect} data={image} selected={selected === image} />
+                    <ImageCard on:selected={newSelect} data={image} selected={selected === image} key={image.file}/>
                 </div>
             {/each}
         </div>

@@ -1,16 +1,20 @@
 <script>
     import { gallarray } from "../stores/galleryImages";
     let files = [];
+
     function addFiles() {
-        document.getElementById('folderselect').click()
+        const fileInput = document.getElementById('folderselect');
+        fileInput.click();
+        fileInput.value = ''; // Reset the file input value
     }
 
     $: {
         if (files) {
-            gallarray.add(files);
+            console.log("triggered");
+            gallarray.add([...files]); // Create a shallow copy of the files array
+            files = undefined;
         }
     }
-        
 </script>
 
 <label> 

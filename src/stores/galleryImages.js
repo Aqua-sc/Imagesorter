@@ -9,6 +9,7 @@ function createGallarray() {
     return {
         subscribe, 
         add: (files) => {
+            console.log(files.length)
             files = [...files];
             files = files.filter(file => file.type.startsWith("image/"));
             files = files.map(file => new GalleryImage(file, 0));
@@ -18,12 +19,18 @@ function createGallarray() {
             update(data => {
                 data.forEach(a => {
                     if (a.getCategory().id == id) {
-                        console.log("ofund")
                         a.setCategory(0)
                     }
                 })
                 return data
             })
+        },
+        remove: (image) => {
+            update(data => {
+                const updatedData = data.filter(item => item !== image);
+                return updatedData;
+            });
+            gallarray = gallarray
         },
         set, 
         clear: () => set([])
