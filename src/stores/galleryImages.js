@@ -25,6 +25,12 @@ function createGallarray() {
                 return data
             })
         },
+        resetCategories: () => {
+            update(data => {
+                data.forEach(a => a.setCategory(0));
+                return data;
+            })
+        },
         remove: (image) => {
             update(data => {
                 const updatedData = data.filter(item => item !== image);

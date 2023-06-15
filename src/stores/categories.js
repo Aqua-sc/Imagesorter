@@ -2,6 +2,7 @@ import { setResponse } from '@sveltejs/kit/node';
 import { writable } from 'svelte/store';
 import { Keycombination } from '../classes/Keycombination';
 import { gallarray } from './galleryImages';
+import { xlink_attr } from 'svelte/internal';
 
 
 function createCategories() {
@@ -51,6 +52,30 @@ function createCategories() {
                 return newData;
             })
             categories = categories
+        },
+        parseJsonObject: (JSON) => {
+            // Check if the file is valid
+            let keys = JSON.map(a => a.id)
+            let names = JSON.map(a => a.name)
+            let valid = keys.length === (new Set(keys)).size ? '' : 'All id\'s must be unique'
+            valid = keys.includes(0) ? '' : 'A category with id \'0\' must be present'
+            valid = names.length === (new Set(names)).size ? '' : 'All names must be unique'
+            if (!valid) {
+                update(data => {
+                    const newData = {}
+                    JSON.forEach(element => {
+                        let shortcutjson = element.shortcut
+                        let shortcut = new Keycombination(shortcutjson.ctrlkey, shortcutjson.shiftkey, shortcutjson.altkey, shortcutjson.key, shortcutjson.keycode)
+                        let category = { name: element.name, color: element.color, id: element.id, shortcut: shortcut}
+                        newData[element.id] = category
+                    });
+                    return newData
+                })
+                categories = categories
+                gallarray.resetCategories()
+                return '';
+            }
+            return valid;
         },
         set, 
         getById: (id) => {
