@@ -70,7 +70,7 @@
       confirm_error = 'Name cannot be empty'
       return
     }
-    if (!categories.isUniqueName(text) && text != category.name) {
+    if (!categories.isUniqueName(text) && text != (category ? category.name : '')) {
       confirm_error = 'A category with this name already exists'
       return
     }
