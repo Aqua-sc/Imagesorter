@@ -4,7 +4,7 @@
 </script>
 <div>
     <br>
-    <Instructioncategory title="Uploading Image">
+    <Instructioncategory id="uploading_images" title="Uploading images">
         <p>Click on the dropzone or drag your folder into to the dropzone to select your images.</p>
         <p>Only image files (.jpg, .png, .gif, .svg, .webp ...) will be added to the galary.</p>
         <div class="flex items-center justify-center">
@@ -23,19 +23,19 @@
         </div>
     </Instructioncategory>
     <br>
-        <Instructioncategory title="Managing categories">
-            <div class="flex items-center justify-center">
-                <p  class="whitespace-pre">You can view categories using the</p>
-                <svg class="w-6 h-6 mr-1 ml-1 pt-0.5 stroke-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                </svg>
-                <p>button located on the bottom right of your screen.</p>
-            </div>
-            <p>You can edit or remove a category by clicking on it. The default category can not be removed.</p>
-            <p>When removing a category, all images with that category will go back to having the default category.</p>
-        </Instructioncategory>
+    <Instructioncategory id="managing_categories" title="Managing categories">
+        <div class="flex items-center justify-center">
+            <p  class="whitespace-pre">You can view categories using the</p>
+            <svg class="w-6 h-6 mr-1 ml-1 pt-0.5 stroke-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M8.25 6.75h12M8.25 12h12m-12 5.25h12M3.75 6.75h.007v.008H3.75V6.75zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zM3.75 12h.007v.008H3.75V12zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm-.375 5.25h.007v.008H3.75v-.008zm.375 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
+            </svg>
+            <p>button located on the bottom right of your screen.</p>
+        </div>
+        <p>You can edit or remove a category by clicking on it. The default category can not be removed.</p>
+        <p>When removing a category, all images with that category will go back to having the default category.</p>
+    </Instructioncategory>
     <br>
-    <Instructioncategory title="Selecting images">
+    <Instructioncategory id="selecteing_images" title="Selecting images">
         <p>Clicking on an image in the gallery view on the left of your screen will select the image.</p>
         <div class="flex items-center justify-center">
             <p>The selected image will now have a</p>

@@ -1,12 +1,27 @@
 <script>
     import { slide } from "svelte/transition";
+	import instructioncategorystates from "../stores/instructioncategorystate";
     export let title
+    export let id
     let show = false
+
+    instructioncategorystates.subscribe((data) => {
+        if (data[id] === undefined) {
+            instructioncategorystates.add(id)
+        } else {
+            show = data[id]
+        }
+    })
+
+    function toggle() {
+        instructioncategorystates.setId(id, !show)
+    }
+    
 </script>
 
 <div class="text-center w-full text-gray-200">
     <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <div class="flex gap-2 cursor-pointer text-center w-full justify-center items-center" on:click={() => show = !show}>
+    <div class="flex gap-2 cursor-pointer text-center w-full justify-center items-center" on:click={toggle}>
         <div class="pb-3">
             {#if !show}
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" class="w-6 h-6">
