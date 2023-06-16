@@ -1,8 +1,8 @@
 <script>
 	import Instructioncategory from "../../components/instructioncategory.svelte";
-
+    //TODO: Make all trashcan icons the same
 </script>
-<div>
+<div class="overflow-contain absolute w-full">
     <br>
     <Instructioncategory id="uploading_images" title="Uploading images">
         <p>Click on the dropzone or drag your folder into to the dropzone to select your images.</p>
@@ -16,11 +16,13 @@
         </div>
         <div class="flex items-center justify-center">
             <p  class="whitespace-pre">You can <u>remove</u> all images using the</p>
-            <svg class="w-4 h-4 mr-1 ml-1 fill-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+            <svg class="w-4 h-4 mr-1 ml-1 fill-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
                 <path fill="none" d="M0 0h24v24H0z"/><path d="M7 4V2h10v2h5v2h-2v15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6H2V4h5zM6 6v14h12V6H6zm3 3h2v8H9V9zm4 0h2v8h-2V9z"/>
             </svg> 
             <p>button located on the bottom left of your screen.</p>
         </div>
+        <br>
+        <p class="text-red-500">Keep in mind that upon an (accidental) close/refresh of the page, all progress will be lost.</p>
     </Instructioncategory>
     <br>
     <Instructioncategory id="managing_categories" title="Managing categories">
@@ -33,6 +35,43 @@
         </div>
         <p>You can edit or remove a category by clicking on it. The default category can not be removed.</p>
         <p>When removing a category, all images with that category will go back to having the default category.</p>
+        <p>In the category menu u will also find the following buttons:</p>
+        <div class="flex justify-center">
+            <div class="text-start max-w-max min-w-min justify-center flex-col">
+                <ul class="list-disc list-inside">
+                    <li class="flex justify-center pt-2 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-0.5 stroke-blue-400">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+                        </svg>
+                        <p>: Add a category</p>
+                    </li>
+                    <li class="flex justify-center pt-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-6 mr-0.5 pt-0.5 stroke-red-400">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+                        </svg>
+                        <p>: Remove all categories (except default)</p>
+                    </li>
+                    <li class="flex justify-center pt-2 items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1 stroke-blue-400">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+                        </svg>
+                        <p>: Download categories</p>
+                    </li>
+                    <li class="flex justify-center pt-2 items-center pb-2">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-1 stroke-blue-400">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5m-13.5-9L12 3m0 0l4.5 4.5M12 3v13.5" />
+                        </svg>
+                        <p>: Upload categories</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <p>When adding a category you pick a name (must be unique) and color.</p>
+        <p>Optionally you can add a shortcut by clicking "<u>Register shortcut</u>" and pressing the desired keys</p>
+        <br>
+        <p>When uploading categories you should only upload files downloaded from this website that have not been altered</p>
+        <p>Uploading any other json-files will most likely not work and the behaviour will be unpredictable</p>
+        
     </Instructioncategory>
     <br>
     <Instructioncategory id="selecteing_images" title="Selecting images">
@@ -48,11 +87,25 @@
         <p>You can use the dropdown menu to give the image a category.</p>
         <div class="flex items-center justify-center">
             <p  class="whitespace-pre">You can <u>remove</u> the selected image using the</p>
-            <svg class="mr-1 ml-1 stroke-red-500 fill-transparent w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <svg class="mr-1 ml-1 stroke-red-400 fill-transparent w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
             </svg>
             <p>button located on the top right of your screen.</p>
         </div>
     </Instructioncategory>
+    <br>
 </div>
 
+<style>
+    /* Track */
+    ::-webkit-scrollbar {
+      width: 6px; /* width of the vertical scrollbar */
+      height: 6px; /* height of the horizontal scrollbar */
+    }
+
+    /* Thumb */
+    ::-webkit-scrollbar-thumb {
+      background-color: rgb(125 211 252); /* color of the scrollbar thumb */
+      border-radius: 3px; /* border radius of the scrollbar thumb */
+    }
+</style>

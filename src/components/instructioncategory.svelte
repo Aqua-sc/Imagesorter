@@ -36,7 +36,7 @@
         <h1 class="text-center text-3xl mb-3 cursor-pointer" ><b>{title}</b></h1>
     </div>
     {#if show}
-        <div transition:slide|local>
+        <div transition:slide|local class="">
             <slot></slot>
         </div>
     {/if}
