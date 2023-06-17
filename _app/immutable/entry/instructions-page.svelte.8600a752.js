@@ -1,1 +1,0 @@
-import{S as o,i,s as r,q as l,r as m,b as c,D as a,h as p}from"../chunks/index.ea3cfd22.js";function d(s){let t;return{c(){t=l("Not yet implemented")},l(e){t=m(e,"Not yet implemented")},m(e,n){c(e,t,n)},p:a,i:a,o:a,d(e){e&&p(t)}}}class f extends o{constructor(t){super(),i(this,t,null,d,r,{})}}export{f as default};
