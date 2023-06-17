@@ -2,7 +2,7 @@
 	import Instructioncategory from "../../components/instructioncategory.svelte";
     //TODO: Make all trashcan icons the same
 </script>
-<div class="overflow-contain absolute w-full">
+<div class="w-full overflow-y-auto overscroll-y-scroll h-gallery">
     <br>
     <Instructioncategory id="uploading_images" title="Uploading images">
         <p>Click on the dropzone or drag your folder into to the dropzone to select your images.</p>
@@ -68,6 +68,8 @@
         </div>
         <p>When adding a category you pick a name (must be unique) and color.</p>
         <p>Optionally you can add a shortcut by clicking "<u>Register shortcut</u>" and pressing the desired keys</p>
+        <p>A shortcut consists of zero or more modifier keys (Shift/Ctrl/Alt) + a non-special key</p>
+        <p>Some shortcuts used by your browser (e.g. Ctrl + p) will not work</p>
         <br>
         <p>When uploading categories you should only upload files downloaded from this website that have not been altered</p>
         <p>Uploading any other json-files will most likely not work and the behaviour will be unpredictable</p>
@@ -99,8 +101,8 @@
 <style>
     /* Track */
     ::-webkit-scrollbar {
-      width: 6px; /* width of the vertical scrollbar */
-      height: 6px; /* height of the horizontal scrollbar */
+      width: 8px; /* width of the vertical scrollbar */
+      height: 4px; /* height of the horizontal scrollbar */
     }
 
     /* Thumb */

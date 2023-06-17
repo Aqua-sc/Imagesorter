@@ -33,12 +33,12 @@
     })
 
     onMount(() => {
-        window.addEventListener('keyup', handleKeyPress);
+        window.addEventListener('keydown', handleKeyPress);
     });
 
     // Don't forget to remove the event listener when the component is unmounted
     onDestroy(() => {
-        window.removeEventListener('keyup', handleKeyPress);
+        window.removeEventListener('keydown', handleKeyPress);
     });
 
     function handleKeyPress(event) {

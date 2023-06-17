@@ -8,11 +8,13 @@
     <link href="https://cdn.jsdelivr.net/npm/remixicon@2.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 
-<body class=" bg-zinc-600" >
+<body class=" fixed w-full bg-zinc-600" >
     <div>
         <Nav/>
     </div>
-    <slot></slot>
+    <div>
+        <slot></slot>
+    </div>
 </body>
 
 <style>
