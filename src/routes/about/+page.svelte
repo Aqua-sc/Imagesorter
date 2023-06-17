@@ -2,6 +2,10 @@
     import { base } from '$app/paths';
 </script>
 
+<svelte:head>
+    <title> Imagesorter </title>
+</svelte:head>
+
 <div class="text-gray-200 text-center pt-">
     <br>
     <h1 class="text-3xl pb-3"> <u>About this website</u> </h1>

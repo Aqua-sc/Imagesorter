@@ -2,6 +2,11 @@
 	import Instructioncategory from "../../components/instructioncategory.svelte";
     //TODO: Make all trashcan icons the same
 </script>
+
+<svelte:head>
+    <title> Imagesorter </title>
+</svelte:head>
+
 <div class="w-full overflow-y-auto overscroll-y-scroll h-gallery">
     <br>
     <Instructioncategory id="uploading_images" title="Uploading images">
