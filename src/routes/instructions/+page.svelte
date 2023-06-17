@@ -104,9 +104,9 @@
     <Instructioncategory id="keyboard_only" title="Using the keyboard">
         <p>Once you have your files selected and categories made it is possible to work using only the keyboard.</p>
         <p>Using the arrow keys you can select the image directly above/below the currently selected one.</p>
-        <p>(It is advised to, after selecting the initial image, click somewhere on the background of the screen so the scrollbar scrolls properly)</p>
+        <p>(It is advised to, after selecting the initial image, click somewhere on the background of the screen so the scrollbar scrolls properly.)</p>
         <br>
-        <p>Using the shortcuts you can give the selected image the desired category</p>
+        <p>Using the shortcuts you can give the selected image the desired category.</p>
     </Instructioncategory>
     <br>
     <Instructioncategory id="exporting" title="Exporting">
@@ -119,7 +119,7 @@
             </svg>
             <p>button located next to the textfield.</p>
         </div>
-        <p>All images will be grouped into folders corresponding to the categories</p>
+        <p>All images will be grouped into folders corresponding to the categories.</p>
     </Instructioncategory>
     <br>
 </div>
