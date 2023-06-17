@@ -40,7 +40,8 @@ module.exports = {
         'pptx-image': '11vw',
         'nav' : '6.5vh',
         'gallery' : '93.5vh',
-        'selected' : '75vh'
+        'selected' : '75vh',
+        '5.5': '1.375rem'
       },
 
       minWidth: {

@@ -6,7 +6,7 @@
     <br>
     <Instructioncategory id="uploading_images" title="Uploading images">
         <p>Click on the dropzone or drag your folder into to the dropzone to select your images.</p>
-        <p>Only image files (.jpg, .png, .gif, .svg, .webp ...) will be added to the galary.</p>
+        <p>Only image files (.jpg, .png, .gif, .svg, .webp ...) will be added to the gallery.</p>
         <div class="flex items-center justify-center">
             <p  class="whitespace-pre">Additional folders can be added using the </p>
             <svg class="w-4 h-4 mr-1 ml-1 fill-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -16,9 +16,9 @@
         </div>
         <div class="flex items-center justify-center">
             <p  class="whitespace-pre">You can <u>remove</u> all images using the</p>
-            <svg class="w-4 h-4 mr-1 ml-1 fill-red-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="none" d="M0 0h24v24H0z"/><path d="M7 4V2h10v2h5v2h-2v15a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V6H2V4h5zM6 6v14h12V6H6zm3 3h2v8H9V9zm4 0h2v8h-2V9z"/>
-            </svg> 
+            <svg class="mr-1 ml-1 stroke-red-400 fill-transparent w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
+            </svg>
             <p>button located on the bottom left of your screen.</p>
         </div>
         <br>
@@ -35,7 +35,7 @@
         </div>
         <p>You can edit or remove a category by clicking on it. The default category can not be removed.</p>
         <p>When removing a category, all images with that category will go back to having the default category.</p>
-        <p>In the category menu u will also find the following buttons:</p>
+        <p>In the category menu you will also find the following buttons:</p>
         <div class="flex justify-center">
             <div class="text-start max-w-max min-w-min justify-center flex-col">
                 <ul class="list-disc list-inside">
@@ -67,16 +67,16 @@
             </div>
         </div>
         <p>When adding a category you pick a name (must be unique) and color.</p>
-        <p>Optionally you can add a shortcut by clicking "<u>Register shortcut</u>" and pressing the desired keys</p>
-        <p>A shortcut consists of zero or more modifier keys (Shift/Ctrl/Alt) + a non-special key</p>
-        <p>Some shortcuts used by your browser (e.g. Ctrl + p) will not work</p>
+        <p>Optionally you can add a shortcut by clicking "<u>Register shortcut</u>" and pressing the desired keys.</p>
+        <p>A shortcut consists of zero or more modifier keys (Shift/Ctrl/Alt) + a non-special key.</p>
+        <p>Some shortcuts used by your browser (e.g. Ctrl + p) will not work.</p>
         <br>
-        <p>When uploading categories you should only upload files downloaded from this website that have not been altered</p>
-        <p>Uploading any other json-files will most likely not work and the behaviour will be unpredictable</p>
+        <p>When uploading categories you should only upload files downloaded from this website that have not been altered.</p>
+        <p>Uploading any other JSON files will most likely not work and the behaviour will be unpredictable.</p>
         
     </Instructioncategory>
     <br>
-    <Instructioncategory id="selecteing_images" title="Selecting images">
+    <Instructioncategory id="selecting_images" title="Selecting images">
         <p>Clicking on an image in the gallery view on the left of your screen will select the image.</p>
         <div class="flex items-center justify-center">
             <p>The selected image will now have a</p>
@@ -89,11 +89,32 @@
         <p>You can use the dropdown menu to give the image a category.</p>
         <div class="flex items-center justify-center">
             <p  class="whitespace-pre">You can <u>remove</u> the selected image using the</p>
-            <svg class="mr-1 ml-1 stroke-red-400 fill-transparent w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+            <svg class="mr-1 ml-1 stroke-red-400 fill-transparent w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" d="M14.74 9l-.346 9m-4.788 0L9.26 9m9.968-3.21c.342.052.682.107 1.022.166m-1.022-.165L18.16 19.673a2.25 2.25 0 01-2.244 2.077H8.084a2.25 2.25 0 01-2.244-2.077L4.772 5.79m14.456 0a48.108 48.108 0 00-3.478-.397m-12 .562c.34-.059.68-.114 1.022-.165m0 0a48.11 48.11 0 013.478-.397m7.5 0v-.916c0-1.18-.91-2.164-2.09-2.201a51.964 51.964 0 00-3.32 0c-1.18.037-2.09 1.022-2.09 2.201v.916m7.5 0a48.667 48.667 0 00-7.5 0" />
             </svg>
             <p>button located on the top right of your screen.</p>
         </div>
+    </Instructioncategory>
+    <br>
+    <Instructioncategory id="keyboard_only" title="Using the keyboard">
+        <p>Once you have your files selected and categories made it is possible to work using only the keyboard.</p>
+        <p>Using the arrow keys you can select the image directly above/below the currently selected one.</p>
+        <p>(It is advised to, after selecting the initial image, click somewhere on the background of the screen so the scrollbar scrolls properly)</p>
+        <br>
+        <p>Using the shortcuts you can give the selected image the desired category</p>
+    </Instructioncategory>
+    <br>
+    <Instructioncategory id="exporting" title="Exporting">
+        <p>Once all the images have the desired category you can download the sorted images.</p>
+        <p>First fill in the name for the folder in the textfield on the bottom left.</p>
+        <div class="flex items-center justify-center">
+            <p  class="whitespace-pre">You can download the folder using the</p>
+            <svg class="w-6 h-6 mr-1 ml-1 pt-0.5 stroke-blue-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
+            </svg>
+            <p>button located next to the textfield.</p>
+        </div>
+        <p>All images will be grouped into folders corresponding to the categories</p>
     </Instructioncategory>
     <br>
 </div>

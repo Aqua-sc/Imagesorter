@@ -29,9 +29,9 @@
 <div class="flex gap-1 mt-1 place-items-center">
     <input class="p-1 border-blue-500 bg-blue-300 bg-opacity-95 border-2 rounded-md text-white font-bold placeholder-gray-200 text-base focus:outline-0 focus:ring-2" bind:value={name} placeholder="Folder name here"> 
     <label> 
-        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 py-2 rounded" on:click={download} title="Download"> 
-            <svg class="w-4 h-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                <path fill="none" d="M0 0h24v24H0z"/><path d="M3 19h18v2H3v-2zm10-5.828L19.071 7.1l1.414 1.414L12 17 3.515 8.515 4.929 7.1 11 13.17V2h2v11.172z" fill="rgba(255,255,255,1)"/>
+        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-1.5 py-1.5 rounded stroke-white fill-none stroke-2" on:click={download} title="Download"> 
+            <svg class="w-5.5 h-5.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 005.25 21h13.5A2.25 2.25 0 0021 18.75V16.5M16.5 12L12 16.5m0 0L7.5 12m4.5 4.5V3" />
             </svg> 
         </button>    
     </label>
