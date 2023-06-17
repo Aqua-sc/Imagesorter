@@ -1,6 +1,6 @@
 {
 	"name": "my-sveltekit-picturesorter",
-	"homepage": "https://aqua-sc.github.io/PictureSorter/",
+	"homepage": "https://aqua-sc.github.io/Imagesorter/",
 	"version": "0.0.1",
 	"scripts": {
 		"dev": "vite dev",

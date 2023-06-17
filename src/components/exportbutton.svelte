@@ -22,12 +22,20 @@
         }
         
     }
+
+    function handleKeyPress(event) {
+    if (event.key === "Enter") {
+      // Execute your desired function here
+      // For example, call a function named 'handleEnterKeyPress'
+        download()
+    }
+}
 </script>
 
 
 
 <div class="flex gap-1 mt-1 place-items-center">
-    <input class="p-1 border-blue-500 bg-blue-300 bg-opacity-95 border-2 rounded-md text-white font-bold placeholder-gray-200 text-base focus:outline-0 focus:ring-2" bind:value={name} placeholder="Folder name here"> 
+    <input class="p-1 border-blue-500 bg-blue-300 bg-opacity-95 border-2 rounded-md text-white font-bold placeholder-gray-200 text-base focus:outline-0 focus:ring-2" bind:value={name} placeholder="Folder name here" on:keydown={handleKeyPress}> 
     <label> 
         <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold px-1.5 py-1.5 rounded stroke-white fill-none stroke-2" on:click={download} title="Download"> 
             <svg class="w-5.5 h-5.5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

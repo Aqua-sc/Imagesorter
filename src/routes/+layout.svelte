@@ -2,6 +2,7 @@
 
 <script>
     import Nav from "../components/nav.svelte"
+    import { base } from '$app/paths';
 </script>
 
 <head>
