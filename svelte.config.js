@@ -7,7 +7,7 @@ export default {
   kit: {
     adapter: adapter(),
     paths: {
-      base: dev ? '' : '/PictureSorter',
+      base: dev ? '' : '/Imagesorter',
     },
   }
 };
